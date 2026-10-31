@@ -32,7 +32,7 @@ price_usd = 0
 # FAQ
 questions = [
     { question = "Which modes does it have?", answer = "Standard, scientific, programmer, graphing and date calculation, plus unit converters for volume, length, weight, temperature, energy, area, speed, time, power, data, pressure and angle, and a currency converter." },
-    { question = "Do the keyboard shortcuts match Windows?", answer = "Mostly. The shortcut list comes from the Windows Calculator's own definitions. On macOS, copy, paste and the graph zoom and reset shortcuts use Command instead of Ctrl, and everything else keeps the Windows keys. In Settings you can switch Command back to Ctrl." },
+    { question = "Do the keyboard shortcuts match Windows?", answer = "Mostly. The shortcut list comes from the Windows Calculator's own definitions. On macOS the Ctrl key becomes Command, and a few shortcuts that clash with macOS (such as history, memory store and subtract) use a Shift or Alt variant on every system. In Settings you can switch Command back to Ctrl." },
     { question = "Does it need an account or an internet connection?", answer = "There are no accounts and calculations run locally. The only network use is currency rates. Each rate source stays off until you agree to it in Settings, and only the latest rate table is requested. The amounts and currencies you enter are not sent." },
     { question = "Where does the calculation engine come from?", answer = "From Microsoft's open-source Windows Calculator, which is included unmodified as a pinned Git submodule and used under its MIT licence. Redmond Calculator adds the Avalonia interface and the code that connects the two." },
     { question = "Can I download it?", answer = "Not yet. No release has been published. The source code is on GitHub under the MIT licence and can be built with the steps in its README." }
@@ -83,7 +83,7 @@ The current version has:
 
 ---
 
-The shortcut list comes from the Windows Calculator's own definitions, including the mode switches and memory keys. On macOS, copy, paste and the graph zoom and reset shortcuts use <kbd>⌘</kbd> instead of <kbd>Ctrl</kbd>. All other shortcuts keep their Windows keys. In Settings you can switch <kbd>⌘</kbd> back to <kbd>Ctrl</kbd>.
+The shortcut list comes from the Windows Calculator's own definitions, including the mode switches and memory keys. On macOS the <kbd>Ctrl</kbd> key becomes <kbd>⌘</kbd>. A few shortcuts that would clash with macOS, such as history, memory store and memory subtract, use a <kbd>Shift</kbd> or <kbd>Alt</kbd> variant on every system. In Settings you can switch <kbd>⌘</kbd> back to <kbd>Ctrl</kbd>. Key names follow your keyboard language, so a German layout shows <kbd>Strg</kbd>.
 
 
 ## Availability

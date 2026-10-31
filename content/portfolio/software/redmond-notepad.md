@@ -81,7 +81,7 @@ Plain text editing, with:
 
 ---
 
-Redmond Notepad uses the Windows shortcuts on every system. On macOS the <kbd>Ctrl</kbd> key becomes <kbd>⌘</kbd>, so a new tab is <kbd>⌘</kbd> + <kbd>N</kbd>. In Settings you can keep <kbd>Ctrl</kbd> instead. Key names follow your keyboard language, so a German layout shows <kbd>Strg</kbd>.
+Redmond Notepad uses the Windows shortcuts on every system, with one change: replace is <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>, because <kbd>⌘</kbd> + <kbd>H</kbd> hides apps on macOS. On macOS the <kbd>Ctrl</kbd> key becomes <kbd>⌘</kbd>, so a new tab is <kbd>⌘</kbd> + <kbd>N</kbd>. In Settings you can keep <kbd>Ctrl</kbd> instead. Key names follow your keyboard language, so a German layout shows <kbd>Strg</kbd>.
 
 ## Status
 
