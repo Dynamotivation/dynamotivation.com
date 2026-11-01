@@ -23,10 +23,7 @@ REQUIRED_ATTRIBUTES = [
     "application_category",
     "price_usd",
     "screenshot_urls",
-    "operatingSystem",
     "release_notes",
-    "programming_language",
-    "development_environment",
     "license",
     "availability",
     "project_title",
@@ -105,10 +102,7 @@ def validate_frontmatter(filepath, frontmatter):
 
     # Check SEO attributes (can be anywhere in frontmatter)
     seo_attrs = [
-        "operatingSystem",
         "release_notes",
-        "programming_language",
-        "development_environment",
         "license",
         "availability",
         "project_title",

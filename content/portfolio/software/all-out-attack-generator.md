@@ -34,9 +34,6 @@ availability = "InStock"
 
 
 # JSON-LD SEO for Software
-operatingSystem = "Windows, Android, Web browser"
-programming_language = "GML (GameMaker Language)"
-development_environment = "GameMaker Studio 1.4"
 license = "Closed Source"
 price_usd = 0
 # No rating yet; an empty value keeps AggregateRating out of the JSON-LD

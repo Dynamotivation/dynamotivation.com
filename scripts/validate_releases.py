@@ -80,6 +80,21 @@ def exposed_slugs():
     return slugs
 
 
+PAGE_DATE = re.compile(r"^date\s*=\s*(\d{4}-\d{2}-\d{2})", re.M)
+
+
+def validate_page_dates(data):
+    """A page's date is its first release; it must agree with the release data."""
+    errors = []
+    for slug, entry in data.items():
+        page = SOFTWARE / f"{slug}.md"
+        dated = [r["date"] for r in entry.get("releases", []) if isinstance(r, dict) and r.get("date")]
+        match = PAGE_DATE.search(front_matter(page)) if page.is_file() else None
+        if dated and match and match.group(1) != min(dated):
+            errors.append(f"{slug}: page date {match.group(1)} is not its first release {min(dated)}")
+    return errors
+
+
 def validate_catalog_pages(data):
     """Every hub-exposed software needs a per-software release catalog page."""
     errors = []
@@ -167,7 +182,7 @@ def main():
     except (OSError, json.JSONDecodeError) as error:
         print(f"{RELEASES}: {error}")
         return 1
-    errors = validate(data) + validate_catalog_pages(data)
+    errors = validate(data) + validate_catalog_pages(data) + validate_page_dates(data)
     for error in errors:
         print(error)
     if errors:
