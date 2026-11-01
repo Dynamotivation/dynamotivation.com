@@ -29,7 +29,7 @@ infobox_images = [
 screenshot_urls = []
 same_as = ["https://github.com/Dynamotivation/All-Out-Attack-Generator"]
 application_category = "DesignApplication"
-release_notes = "Latest release (see the release notes below)."
+# release_notes = derived from data/releases.json (newest entry); do not set by hand
 availability = "InStock"
 
 
