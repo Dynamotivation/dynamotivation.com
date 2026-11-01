@@ -1,0 +1,17 @@
+{#- Shared JSON fragments for the versioned catalog API. -#}
+{% macro release(r) -%}
+{
+          "version": {{ r.version | json_encode() | safe }},
+          "date": {{ r.date | default(value="") | json_encode() | safe }},
+          "highlights": [{% for h in r.highlights | default(value=[]) %}{{ h | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}],
+          "downloads": [{% for d in r.downloads | default(value=[]) %}
+            {
+              "platform": {{ d.platform | json_encode() | safe }},
+              "arch": {{ d.arch | json_encode() | safe }},
+              "url": {{ d.url | json_encode() | safe }},
+              "sha256": {{ d.sha256 | default(value="") | json_encode() | safe }},
+              "size": {{ d.size | default(value=0) }}
+            }{% if not loop.last %},{% endif %}{% endfor %}
+          ]
+        }
+{%- endmacro release %}
