@@ -29,7 +29,7 @@ infobox_images = [
 screenshot_urls = []
 same_as = ["https://github.com/Dynamotivation/All-Out-Attack-Generator"]
 application_category = "DesignApplication"
-release_notes = "Latest release 1.2.2 (2022-04-19)."
+release_notes = "Latest release (see the release notes below)."
 availability = "InStock"
 
 
@@ -141,7 +141,7 @@ During the development of *All-Out Attack Generator* a few challenges arose:
 
 ---
 
-Here is what the latest version (1.2.2) can do:
+Here is what the latest version can do:
 
 *   Character uploads
     *   Add up to four images for the teammates and four for the enemies.
