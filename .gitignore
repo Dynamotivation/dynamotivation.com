@@ -3,3 +3,8 @@ zola
 zola.exe
 .vscode/
 .wrangler/
+
+# Placeholder artwork. Named with a loud token so it can never be committed by
+# accident: git will not track these at all, which is a stronger guarantee than
+# a hook anyone can skip with --no-verify.
+*__PLACEHOLDER__*

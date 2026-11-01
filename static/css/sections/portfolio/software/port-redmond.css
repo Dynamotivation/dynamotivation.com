@@ -1,0 +1,306 @@
+/* Port Redmond splash page.
+
+   The accent is the site's own --main-color rather than the bright green and
+   cyan, which were too loud next to screenshots of grey desktop applications.
+
+   This page loads the site's page.css through its parent template. That
+   stylesheet is tuned for wiki-style articles, so everything here is scoped to
+   #portRedmond and the page deliberately avoids the elements page.css styles
+   most heavily: no lists, no figures, no #contentContainer. */
+
+#portRedmond {
+    --pr-ink: var(--text-color);
+    --pr-accent: var(--main-color);
+    --pr-hairline: color-mix(in oklab, var(--text-color) 15%, transparent);
+    --pr-mat: color-mix(in oklab, var(--text-color) 5%, var(--background-color));
+    --pr-muted: color-mix(in oklab, var(--text-color) 60%, transparent);
+
+    --pr-radius-lg: 1rem;
+    --pr-radius: 0.625rem;
+    --pr-radius-sm: 0.375rem;
+    --pr-radius-icon: 20%;
+
+    --pr-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.1);
+    --pr-shadow-lift: 0 0.75rem 2rem rgba(0, 0, 0, 0.16);
+
+    /* The site gives article pages a very generous top margin. A splash should
+       start higher than that but still clear the sticky header. */
+    --pr-margin-top: min(10vh, 5rem);
+
+    display: block;
+    max-width: min(78rem, 92vw);
+    margin: var(--pr-margin-top) auto 20vh auto;
+    color: var(--pr-ink);
+    line-height: 1.6;
+}
+
+@media (prefers-color-scheme: dark) {
+    #portRedmond {
+        --pr-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.4);
+        --pr-shadow-lift: 0 0.75rem 2rem rgba(0, 0, 0, 0.55);
+    }
+}
+
+#portRedmond,
+#portRedmond *,
+#portRedmond *::before,
+#portRedmond *::after {
+    box-sizing: border-box;
+}
+
+/* Wrapped in :where() so these resets carry no specificity at all. Scoping them
+   to #portRedmond directly would out-rank every .pr- class below it and quietly
+   strip the margins those rules set. */
+:where(#portRedmond) :where(h1, h2, h3) {
+    margin: 0;
+    line-height: 1.2;
+}
+
+:where(#portRedmond) :where(p) {
+    margin: 0;
+}
+
+:where(#portRedmond) :where(img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- Banner ---------- */
+
+/* The words sit on the left, top aligned, and the screenshots sit to the right
+   of them rather than underneath. Nothing overlaps, so nothing has to be
+   darkened to stay readable: what is left is a faint tint that gives the banner
+   an edge against the page without pretending to be a photograph. */
+
+#portRedmond {
+    --pr-banner-tint: color-mix(in oklab, var(--pr-accent) 7%, var(--background-color));
+    --pr-banner-tint-far: color-mix(in oklab, var(--pr-accent) 3%, var(--background-color));
+}
+
+.pr-banner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: start;
+    padding: clamp(2rem, 4vw, 3.25rem);
+    border-radius: var(--pr-radius-lg);
+    background: linear-gradient(112deg,
+        var(--pr-banner-tint) 0%,
+        var(--pr-mat) 55%,
+        var(--pr-banner-tint-far) 100%);
+}
+
+@media (max-width: 56rem) {
+    .pr-banner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.pr-banner__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: -0.025em;
+}
+
+.pr-banner__tagline {
+    margin-top: 1rem;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    max-width: 24ch;
+}
+
+.pr-banner__lede {
+    margin-top: 1.5rem;
+    color: var(--pr-muted);
+    max-width: 38ch;
+}
+
+/* Pushed to the right edge so the column of text is never crowded by them. */
+.pr-banner__shots {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.pr-banner__shot {
+    max-height: 24rem;
+    width: auto;
+    border-radius: var(--pr-radius-sm);
+    box-shadow: var(--pr-shadow-lift);
+}
+
+@media (max-width: 56rem) {
+    .pr-banner__shots {
+        justify-content: flex-start;
+    }
+
+    .pr-banner__shot {
+        max-height: 14rem;
+    }
+}
+
+/* ---------- Claims ---------- */
+
+.pr-claims {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.pr-claim h2 {
+    font-size: 1.05rem;
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.875rem;
+    border-bottom: 0.125rem solid var(--pr-accent);
+}
+
+.pr-claim p {
+    color: var(--pr-muted);
+}
+
+.pr-h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* ---------- Platform differences ---------- */
+
+.pr-diffs {
+    margin-top: 5rem;
+}
+
+.pr-diffs__head {
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+}
+
+.pr-diffs__head p {
+    margin-top: 0.75rem;
+    color: var(--pr-muted);
+}
+
+.pr-diffgroup + .pr-diffgroup {
+    margin-top: 2.5rem;
+}
+
+.pr-diffgroup__title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--pr-muted);
+    margin-bottom: 0.75rem;
+}
+
+.pr-dl {
+    margin: 0;
+    border-radius: var(--pr-radius);
+    overflow: hidden;
+}
+
+.pr-dl__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 0.875rem 1.25rem;
+}
+
+/* Striping carries the pairing without drawing a grid over it. */
+.pr-dl__row:nth-child(odd) {
+    background: var(--pr-mat);
+}
+
+.pr-dl dt {
+    margin: 0;
+    color: var(--pr-muted);
+}
+
+.pr-dl dd {
+    margin: 0;
+    font-weight: 500;
+}
+
+@media (max-width: 40rem) {
+    .pr-dl__row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.25rem;
+    }
+
+    .pr-dl dt {
+        font-size: 0.88rem;
+    }
+}
+
+/* ---------- Applications ---------- */
+
+.pr-apps {
+    margin-top: 5rem;
+}
+
+.pr-apps__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+}
+
+.pr-app {
+    display: block;
+    padding: 1.75rem;
+    background: var(--pr-mat);
+    border-radius: var(--pr-radius);
+    text-decoration: none;
+    color: var(--pr-ink);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pr-app:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--pr-shadow-lift);
+}
+
+/* The application's own icon. It is already drawn as a rounded mark on
+   transparency, so it gets no background, shadow or clipping of its own --
+   those would box in artwork that is meant to float. */
+.pr-app__icon {
+    position: relative;
+    display: block;
+    width: 5.5rem;
+    aspect-ratio: 1;
+    margin-bottom: 1.25rem;
+}
+
+/* The supplied icons are not square, so they are fitted rather than stretched. */
+.pr-app__icon img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.pr-app__name {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.pr-app:hover .pr-app__name {
+    color: var(--pr-accent);
+}
+
+.pr-app__summary {
+    color: var(--pr-muted);
+    font-size: 0.95rem;
+}
+
+/* ---------- Questions ---------- */
+
+.pr-faq {
+    margin-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pr-app {
+        transition: none;
+    }
+}

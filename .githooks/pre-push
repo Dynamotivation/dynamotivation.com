@@ -1,0 +1,20 @@
+#!/bin/bash
+# Pre-push hook - runs the same validation as pre-commit.
+#
+# A pre-commit hook does not run on push, so a commit made with --no-verify (or
+# with ALLOW_PLACEHOLDERS set) would otherwise reach the remote unchecked. This
+# is the last gate that runs on your machine; the workflow in .github is the one
+# that cannot be skipped.
+
+if command -v py &> /dev/null; then
+    PYTHON="py -3"
+elif command -v python3 &> /dev/null; then
+    PYTHON="python3"
+elif command -v python &> /dev/null; then
+    PYTHON="python"
+else
+    echo "Error: Python not found"
+    exit 1
+fi
+
+exec $PYTHON .githooks/pre-commit-validator.py --pushing

@@ -17,53 +17,6 @@
     overflow: hidden;
 }
 
-/* Prominent copyright and source-file notice for projects built around third-party works. */
-#contentContainer .project-legal-notice {
-    --project-legal-border-color: var(--main-color);
-    --project-legal-title-color: var(--main-color);
-    --project-legal-padding: 1.25rem;
-
-    margin: 3rem 0;
-    padding: var(--project-legal-padding);
-    border: 0.25rem solid var(--project-legal-border-color);
-    border-radius: 0.75rem;
-    background-color: var(--background-color);
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.12);
-}
-
-#contentContainer .project-legal-notice h2,
-#contentContainer .project-legal-notice h3 {
-    margin: 0 0 1rem 0;
-    color: var(--project-legal-title-color);
-    font-size: 1.5rem;
-    line-height: 1.3;
-}
-
-#contentContainer .project-legal-notice p {
-    margin: 0.85rem 0 0 0;
-    font-size: 1rem;
-    line-height: 1.55;
-}
-
-#contentContainer .project-legal-notice p:first-of-type {
-    margin-top: 0;
-}
-
-/* Notice text lives in data-text and is drawn by CSS, so crawlers do not index it. */
-#contentContainer .project-legal-notice-unindexed p::before {
-    content: attr(data-text);
-}
-
-#contentContainer .project-legal-notice-unindexed p:first-of-type {
-    font-weight: 700;
-}
-
-@media (max-width: 30rem) {
-    #contentContainer .project-legal-notice {
-        --project-legal-padding: 1rem;
-    }
-}
-
 /* Dark mode variants */
 @media (prefers-color-scheme: dark) {
     .infobox {

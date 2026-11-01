@@ -1,0 +1,96 @@
+{# Splash page for Port Redmond.
+
+   Extends the standard software page rather than base.html so that every
+   OpenGraph, Twitter card, JSON-LD and FAQ block defined there is inherited
+   without being restated. Only the content block is replaced, which is what
+   turns this from a wiki entry into a splash page.
+
+   There is no markdown body. Everything on the page comes from the front
+   matter, so adding an application or a platform difference is a content edit
+   rather than an HTML one. #}
+
+{% extends "sections/software/page.html" %}
+{% import "macros/qna.html" as qna_macro %}
+
+{% block moreAdditionalResources %}
+<link rel="stylesheet" href="{{ get_url(path='css/sections/portfolio/software/port-redmond.css') }}">
+<link rel="stylesheet" href="{{ get_url(path='css/sections/portfolio/software/legal-notice.css') }}">
+{% endblock %}
+
+{% block content %}
+{%- set title = page.extra.project_title | default(value=page.title) %}
+
+<article id="portRedmond">
+
+  {# A div rather than a <header>: the site styles the bare header element for
+     its own sticky navigation bar, and that rule would apply here too. #}
+  <div class="pr-banner">
+    <div class="pr-banner__text">
+      <h1 class="pr-banner__title" style="view-transition-name: {{ hash_letters::hash_letters(input=page.title) }}">{{ title }}</h1>
+      <p class="pr-banner__tagline">{{ page.extra.tagline }}</p>
+      <p class="pr-banner__lede">{{ page.extra.lede }}</p>
+    </div>
+    <div class="pr-banner__shots">
+      {% for s in page.extra.shots %}
+      <img class="pr-banner__shot" src="{{ s.image }}" alt="{{ s.alt }}" loading="lazy" decoding="async">
+      {% endfor %}
+    </div>
+  </div>
+
+  <section class="pr-claims">
+    {% for c in page.extra.claims %}
+    <div class="pr-claim">
+      <h2>{{ c.title }}</h2>
+      <p>{{ c.body }}</p>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="pr-diffs">
+    <div class="pr-diffs__head">
+      <h2 class="pr-h2">About Port Redmond</h2>
+      <p>{{ page.extra.intro }}</p>
+    </div>
+    {% for group in page.extra.differences %}
+    <div class="pr-diffgroup">
+      <h3 class="pr-diffgroup__title">On {{ group.platform }}</h3>
+      <dl class="pr-dl">
+        {% for r in group.rows %}
+        <div class="pr-dl__row">
+          <dt>{{ r.from }}</dt>
+          <dd>{{ r.to }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+    </div>
+    {% endfor %}
+  </section>
+
+  {% if page.extra.apps and page.extra.apps | length > 0 %}
+  <section class="pr-apps">
+    <h2 class="pr-h2">The applications</h2>
+    <div class="pr-apps__grid">
+      {% for a in page.extra.apps %}
+      <a class="pr-app" href="{{ get_url(path=a.page) }}">
+        {# The application's own icon, served from the assets CDN. #}
+        <span class="pr-app__icon">
+          <img src="{{ a.icon }}" alt="" aria-hidden="true" loading="lazy">
+        </span>
+        <h3 class="pr-app__name">{{ a.name }}</h3>
+        <p class="pr-app__summary">{{ a.summary }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if page.extra.questions and page.extra.questions | length > 0 %}
+  <section class="pr-faq">
+    <h2 class="pr-h2" id="faq">Questions</h2>
+    {{ qna_macro::qna(items=page.extra.questions, page_slug="port-redmond") }}
+  </section>
+  {% endif %}
+
+  {% if page.extra.legal_notice %}{% set paragraphs = page.extra.legal_notice %}{% include "shortcodes/legal_notice.html" %}{% endif %}
+</article>
+{% endblock content %}
