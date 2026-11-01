@@ -1,0 +1,10 @@
+{% import "catalog/macros.json" as m %}
+{%- set releases = load_data(path="data/releases.json") %}
+{%- set entries = [] %}
+{%- if releases[page.extra.slug] is defined %}{% set entries = releases[page.extra.slug].releases | default(value=[]) %}{% endif -%}
+{
+  "slug": {{ page.extra.slug | json_encode() | safe }},
+  "releases": [{% for r in entries %}
+        {{ m::release(r=r) }}{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}

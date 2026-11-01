@@ -1,0 +1,43 @@
+{
+  "platforms": {
+    "windows": "Windows",
+    "macos": "macOS",
+    "linux": "Linux",
+    "freebsd": "FreeBSD",
+    "openbsd": "OpenBSD",
+    "netbsd": "NetBSD",
+    "haiku": "Haiku",
+    "android": "Android",
+    "ios": "iOS",
+    "web": "Web",
+    "ps2": "PlayStation 2",
+    "ps3": "PlayStation 3",
+    "psvita": "PlayStation Vita",
+    "switch": "Nintendo Switch",
+    "webos": "LG webOS",
+    "xbox360": "Xbox 360",
+    "wii": "Wii",
+    "3ds": "Nintendo 3DS"
+  },
+  "architectures": {
+    "x86": "x86 (32-bit)",
+    "x64": "x86-64",
+    "arm": "ARM (32-bit)",
+    "arm64": "ARM64",
+    "ppc": "PowerPC",
+    "ppc64": "PowerPC 64",
+    "ppc64le": "PowerPC 64 little-endian",
+    "riscv64": "RISC-V 64",
+    "loongarch64": "LoongArch64",
+    "mips": "MIPS",
+    "mipsel": "MIPS little-endian",
+    "mips64": "MIPS64",
+    "mips64el": "MIPS64 little-endian",
+    "wasm": "WebAssembly"
+  },
+  "runtimes": {
+    "yyc": "GameMaker YYC (native)",
+    "vm": "GameMaker VM",
+    "butterscotch": "Butterscotch"
+  }
+}

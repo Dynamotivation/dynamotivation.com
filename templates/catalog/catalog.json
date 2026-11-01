@@ -1,3 +1,4 @@
+{% import "catalog/macros.json" as m %}
 {% set releases = load_data(path="data/releases.json") %}
 {
   "software": [
@@ -21,18 +22,14 @@
         "height": {{ page.extra.logo_height | default(value=512) }}
       },
       "screenshots": [{% for shot in page.extra.screenshot_urls | default(value=[]) %}{{ shot | replace(from=".avif", to=".webp") | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}],
-      "platforms": {
-        "windows": [{% for t in page.extra.hub.targets.windows | default(value=[]) %}{{ t | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}],
-        "macos": [{% for t in page.extra.hub.targets.macos | default(value=[]) %}{{ t | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}],
-        "linux": [{% for t in page.extra.hub.targets.linux | default(value=[]) %}{{ t | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]
+      "platforms": { {% for os, archs in page.extra.hub.targets | default(value=[]) %}
+        {{ os | json_encode() | safe }}: [{% for t in archs %}{{ t | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]{% if not loop.last %},{% endif %}{% endfor %}
       },
-      "releases": [{% for r in entries %}
-        {
-          "version": {{ r.version | json_encode() | safe }},
-          "date": {{ r.date | default(value="") | json_encode() | safe }},
-          "highlights": [{% for h in r.highlights | default(value=[]) %}{{ h | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]
-        }{% if not loop.last %},{% endif %}{% endfor %}
-      ]
+      "release_count": {{ entries | length }},
+      "releases_url": {{ get_url(path="v1/software/" ~ page.slug ~ "/releases.json", trailing_slash=true) | json_encode() | safe }},
+      "releases": [{% if entries | length > 0 %}
+        {{ m::release(r=entries | first) }}
+      {% endif %}]
     }
 {%- endif %}
 {%- endfor %}

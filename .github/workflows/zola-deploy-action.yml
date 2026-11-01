@@ -12,6 +12,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      - name: validate release data
+        run: python3 scripts/validate_releases.py
+
       # Runs before the build, so a failure here stops the deploy entirely.
       # Local hooks can be skipped with --no-verify; this one cannot.
       - name: refuse placeholder assets

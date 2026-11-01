@@ -163,8 +163,9 @@
     "price": "{{ page.extra.price_usd }}",
     "priceCurrency": "USD"{% if page.extra.availability %},
     "availability": "https://schema.org/{{ page.extra.availability | safe }}"{% endif %}
-  }{% endif %}{% if page.extra.release_notes %},
-  "releaseNotes": "{{ page.extra.release_notes }}"{% endif %}{% set _sv_rel = load_data(path="data/releases.json") %}{% set _sv_list = [] %}{% if _sv_rel[page.slug] is defined %}{% set _sv_list = _sv_rel[page.slug].releases | default(value=[]) %}{% endif %}{% set _sv = page.extra.software_version | default(value="") %}{% if _sv_list | length > 0 %}{% set _sv_latest = _sv_list | first %}{% set _sv = _sv_latest.version %}{% endif %}{% if _sv %},
+  }{% endif %}
+{% set _sv_rel = load_data(path="data/releases.json") %}{% set _sv_list = [] %}{% if _sv_rel[page.slug] is defined %}{% set _sv_list = _sv_rel[page.slug].releases | default(value=[]) %}{% endif %}{% set _sv = page.extra.software_version | default(value="") %}{% set _rn = page.extra.release_notes | default(value="") %}{% if _sv_list | length > 0 %}{% set _sv_latest = _sv_list | first %}{% set _sv = _sv_latest.version %}{% set _rn = "Latest release " ~ _sv_latest.version %}{% if _sv_latest.date %}{% set _rn = _rn ~ " (" ~ _sv_latest.date ~ ")" %}{% endif %}{% set _rn = _rn ~ "." %}{% endif %}{% if _rn %},
+  "releaseNotes": "{{ _rn }}"{% endif %}{% if _sv %},
     "softwareVersion": "{{ _sv }}"{% endif %}{% if page.date %},
     "dateCreated": "{{ page.date | date(format="%Y-%m-%dT%H:%M:%S%:z", timezone="UTC") }}"{% endif %}{% if page.permalink %},
   "mainEntity": { "@id": "{{ page.permalink | safe }}#webpage" }{% endif %}

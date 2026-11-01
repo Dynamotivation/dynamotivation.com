@@ -4,6 +4,9 @@ on:
     paths:
       - data/releases.json
       - scripts/validate_releases.py
+      - scripts/add_release.py
+      - content/v1/**
+      - templates/catalog/**
       - content/portfolio/software/**
 jobs:
   validate:
