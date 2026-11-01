@@ -2,6 +2,23 @@
   "all-out-attack-generator": {
     "releases": [
       {
+        "version": "1.2.4",
+        "date": "2026-11-01",
+        "highlights": [
+          "The setup is now signed twice (SHA-1 and SHA-256) so older Windows versions can read its signature"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.4/all-out-attack-generator-setup-1.2.4.exe",
+            "sha256": "c6792031da39439440705aa99422054631c678b3e5be40b49ff486bc9539f0ca",
+            "size": 4537000
+          }
+        ]
+      },
+      {
         "version": "1.2.3",
         "date": "2026-11-01",
         "highlights": [
