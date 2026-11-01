@@ -12,6 +12,22 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
+      # Runs before the build, so a failure here stops the deploy entirely.
+      # Local hooks can be skipped with --no-verify; this one cannot.
+      - name: refuse placeholder assets
+        run: |
+          if git ls-files | grep -q '__PLACEHOLDER__'; then
+            echo "::error::Placeholder artwork is tracked in the repository."
+            git ls-files | grep '__PLACEHOLDER__'
+            exit 1
+          fi
+          if git grep -lI '__PLACEHOLDER__' -- ':!.github' ':!.githooks' ':!.gitignore' ':!docs' > /dev/null 2>&1; then
+            echo "::error::Source files still reference placeholder artwork."
+            git grep -lI '__PLACEHOLDER__' -- ':!.github' ':!.githooks' ':!.gitignore' ':!docs'
+            exit 1
+          fi
+          echo "No placeholder artwork found."
+
       - name: install minify
         run: sudo apt-get update && sudo apt-get install minify
 

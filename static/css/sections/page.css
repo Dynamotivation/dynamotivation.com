@@ -581,105 +581,83 @@ figcaption {
     inherits: false;
 }
 
-#contentContainer .qna {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+/* --- FAQ (shared by the standard software page and the Port Redmond splash) ---
+   Flat hairline rows with a +/- marker; answers open with a short grid-rows
+   animation. Selectors accept either page container because the splash replaces
+   #contentContainer. Sizes use rem/clamp so the list scales with the viewport. */
+:is(#contentContainer, #portRedmond) .qna {
+    --qna-hairline: color-mix(in oklab, var(--text-color) 15%, transparent);
+    --qna-accent: var(--main-color);
+    --qna-muted: color-mix(in oklab, var(--text-color) 72%, transparent);
+
+    display: block;
+    width: 100%;
     margin: 2rem 0;
 }
 
-#contentContainer .qna-item {
-    position: relative;
-    border-radius: 0.75rem;
-    --qna-border-color-1: color-mix(in srgb, var(--footer-color) 25%, var(--background-color) 75%);
-    --qna-border-color-2: color-mix(in srgb, var(--footer-color) 25%, var(--background-color) 75%);
-    border: 0.125rem solid transparent;
-    background:
-        linear-gradient(var(--background-color), var(--background-color)) padding-box,
-        linear-gradient(45deg, var(--qna-border-color-1), var(--qna-border-color-2)) border-box;
-    overflow: clip;
-
-    transition: --qna-border-color-1 .3s, --qna-border-color-2 .3s;
+:is(#contentContainer, #portRedmond) .qna-item {
+    border-bottom: 0.0625rem solid var(--qna-hairline);
 }
 
-#contentContainer .qna-item:hover {
-    --qna-border-color-1: color-mix(in srgb, var(--accent-color) 80%, var(--footer-color) 20%);
-    --qna-border-color-2: color-mix(in srgb, var(--accent-color-alt) 80%, var(--footer-color) 20%);
+:is(#contentContainer, #portRedmond) .qna-item:first-child {
+    border-top: 0.0625rem solid var(--qna-hairline);
 }
 
-#contentContainer .qna-question {
-    font-size: 1.15rem;
-    font-weight: 700;
-    padding: 1rem 1.2rem;
+:is(#contentContainer, #portRedmond) .qna-question {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
     margin: 0;
+    padding: 1rem 0;
+    font-size: clamp(1rem, 0.94rem + 0.3vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.4;
     cursor: pointer;
     user-select: none;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     list-style: none;
 }
 
-#contentContainer .qna-question::-webkit-details-marker {
+:is(#contentContainer, #portRedmond) .qna-question::-webkit-details-marker {
     display: none;
 }
 
-#contentContainer .qna-question::after {
-    content: "➤";
-    margin-left: auto;
-    color: var(--link-visited-color);
-    font-size: 0.95rem;
-    line-height: 1;
-    transform: rotate(90deg);
+:is(#contentContainer, #portRedmond) .qna-question::after {
+    content: "+";
+    flex: 0 0 auto;
+    color: var(--qna-accent);
+    font-weight: 700;
     transition: transform 0.2s ease;
 }
 
-#contentContainer .qna-item[open] > .qna-question::after {
-    transform: rotate(270deg);
+:is(#contentContainer, #portRedmond) .qna-item[open] > .qna-question::after {
+    content: "\2212";
 }
 
-#contentContainer .qna-question:focus-visible {
-    outline: 0.15rem solid var(--link-color);
+:is(#contentContainer, #portRedmond) .qna-question:hover::after {
+    transform: scale(1.2);
+}
+
+:is(#contentContainer, #portRedmond) .qna-question:focus-visible {
+    outline: 0.15rem solid var(--link-color, var(--qna-accent));
     outline-offset: 0.15rem;
 }
 
-#contentContainer .qna-answer {
-    display: grid;
-    grid-template-rows: 1fr;
+:is(#contentContainer, #portRedmond) .qna-answer {
     overflow: clip;
-    padding-bottom: 1rem;
-}
-
-#contentContainer .qna-item[open] > .qna-answer {
-    animation: qna-open .3s ease;
-}
-
-@keyframes qna-open {
-    from { grid-template-rows: 0fr; }
-    to { grid-template-rows: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #contentContainer .qna-item[open] > .qna-answer {
-        animation: none;
+    :is(#contentContainer, #portRedmond) .qna-question::after {
+        transition: none;
     }
 }
 
-#contentContainer .qna-answer-inner {
-    min-height: 0;
-    overflow: clip;
-    padding: 0 1.2rem;
-    border-top: 0.0625rem solid color-mix(in srgb, var(--footer-color) 18%, var(--background-color) 82%);
-}
-
-#contentContainer .qna-answer,
-#contentContainer .qna-answer * {
-    font-size: 1.05rem;
-    line-height: 1.8rem;
-}
-
-#contentContainer .qna-answer-label {
-    font-weight: 700;
-    margin-right: 0.5rem;
-    color: var(--link-visited-color);
+:is(#contentContainer, #portRedmond) .qna-answer-inner {
+    max-width: 70ch;
+    padding: 0 0 1.25rem;
+    color: var(--qna-muted);
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    line-height: 1.65;
+    overflow-wrap: anywhere;
 }

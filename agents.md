@@ -72,4 +72,4 @@ Pages for fan works or works that imitate a third-party style end with the `lega
 2. Rights holders: "X and related names, characters and artwork are copyright or trademarks of Y." Add one factual sentence only if true (for example, original games required, users supply their own images, components made from scratch).
 3. "All rights are reserved by their respective copyright holders. This work is not affiliated with or endorsed by Y or YoYo Games."
 4. Engine credit when built with GameMaker: "Powered by GameMaker: Studio 1.4 Engine, copyright YoYo Games."
-Paragraphs cannot contain double quotes (use single quotes). Pages using it: AOA, Sonic Mania, Joins the Battle, Misfit Pack.
+Paragraphs cannot contain double quotes (use single quotes). Pages using it: AOA, Sonic Mania, Joins the Battle, Misfit Pack. The Port Redmond splash page takes the same paragraphs from a `legal_notice` array in its front matter and renders them through the same `shortcodes/legal_notice.html` template. The notice styles live in `static/css/sections/portfolio/software/legal-notice.css`, which both the standard software page and the splash page load.

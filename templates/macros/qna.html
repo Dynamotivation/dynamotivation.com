@@ -11,9 +11,9 @@
     {% set qna_question_slug = item.question | slugify %}
     {% set qna_id = "qna-" ~ _slug ~ "-" ~ loop.index ~ "-" ~ qna_question_slug %}
     <details class="qna-item" id="{{ qna_id }}">
-      <summary class="qna-question">Q: {{ item.question }}</summary>
+      <summary class="qna-question">{{ item.question }}</summary>
       <div class="qna-answer">
-        <div class="qna-answer-inner"><span class="qna-answer-label">A:</span> {{ item.answer | markdown(inline=true) | safe }}</div>
+        <div class="qna-answer-inner">{{ item.answer | markdown(inline=true) | safe }}</div>
       </div>
     </details>
   {% endfor %}
