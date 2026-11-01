@@ -7,7 +7,9 @@
           "downloads": [{% for d in r.downloads | default(value=[]) %}
             {
               "platform": {{ d.platform | json_encode() | safe }},
-              "arch": {{ d.arch | json_encode() | safe }},
+              "arch": {{ d.arch | default(value="") | json_encode() | safe }},
+              "runtime": {{ d.runtime | default(value="") | json_encode() | safe }},
+              "variant": {{ d.variant | default(value="") | json_encode() | safe }},
               "url": {{ d.url | json_encode() | safe }},
               "sha256": {{ d.sha256 | default(value="") | json_encode() | safe }},
               "size": {{ d.size | default(value=0) }}

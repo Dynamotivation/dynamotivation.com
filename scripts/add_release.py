@@ -27,12 +27,15 @@ def parse_args(argv):
     parser.add_argument("--version", required=True)
     parser.add_argument("--date", required=True, help="YYYY-MM-DD")
     parser.add_argument("--highlights-file", required=True, help="one highlight per line; blank lines and leading '-'/'*' bullets are ignored")
+    parser.add_argument("--runtime", default="", help="runtime of every --download in this call, e.g. yyc or butterscotch")
+    parser.add_argument("--variant", default="", help="variant of every --download in this call, e.g. sdl2")
     parser.add_argument(
         "--download",
         nargs=5,
         action="append",
         default=[],
         metavar=("PLATFORM", "ARCH", "URL", "SHA256", "SIZE"),
+        help="use - as ARCH when the platform has none (consoles)",
     )
     return parser.parse_args(argv)
 
@@ -56,7 +59,19 @@ def main(argv):
         "date": args.date,
         "highlights": read_highlights(args.highlights_file),
         "downloads": [
-            {"platform": p, "arch": a, "url": u, "sha256": h.lower(), "size": int(s)}
+            {
+                key: value
+                for key, value in (
+                    ("platform", p),
+                    ("arch", "" if a == "-" else a),
+                    ("runtime", args.runtime),
+                    ("variant", args.variant),
+                    ("url", u),
+                    ("sha256", h.lower()),
+                    ("size", int(s)),
+                )
+                if value != ""
+            }
             for p, a, u, h, s in args.download
         ],
     }

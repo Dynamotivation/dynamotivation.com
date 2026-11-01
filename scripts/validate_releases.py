@@ -18,18 +18,35 @@ CATALOGS = ROOT / "content" / "v1" / "software"
 VERSION = re.compile(r"^\d+\.\d+(\.\d+)?([-+][0-9A-Za-z.+-]+)?$")
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ALLOWED_KEYS = {"version", "date", "highlights", "downloads"}
-DOWNLOAD_KEYS = {"platform", "arch", "url", "sha256", "size"}
-PLATFORMS = {
-    "windows": {"x86", "x64", "arm64"},
-    "macos": {"x64", "arm64"},
-    "linux": {"x86", "x64", "arm64"},
-}
+DOWNLOAD_KEYS = {"platform", "arch", "runtime", "variant", "url", "sha256", "size"}
+PLATFORMS_FILE = ROOT / "data" / "platforms.json"
+VARIANT = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
+
+
+def load_registry():
+    """data/platforms.json: which platforms, architectures and runtimes may be named.
+
+    Platform, architecture and runtime are independent facts, not a matrix: a
+    Butterscotch build can target PowerPC Linux or a PlayStation 2, and the same
+    platform can be served by more than one runtime. Add new ones to the registry.
+    """
+    registry = json.loads(PLATFORMS_FILE.read_text(encoding="utf-8"))
+    return {key: set(registry[key]) for key in ("platforms", "architectures", "runtimes")}
+
+
+def check_known(where, kind, value, known, required):
+    if value in (None, "") and not required:
+        return []
+    if value not in known:
+        return [f"{where}: unknown {kind} {value!r} (add it to data/platforms.json)"]
+    return []
 
 
 def validate_downloads(at, downloads):
     if not isinstance(downloads, list):
         return [f"{at}: downloads must be a list"]
+    registry = load_registry()
     errors = []
     seen = set()
     for index, download in enumerate(downloads):
@@ -40,13 +57,16 @@ def validate_downloads(at, downloads):
         unknown = set(download) - DOWNLOAD_KEYS
         if unknown:
             errors.append(f"{here}: unknown keys {sorted(unknown)}")
-        platform, arch = download.get("platform"), download.get("arch")
-        if platform not in PLATFORMS or arch not in PLATFORMS.get(platform, ()):
-            errors.append(f"{here}: unsupported platform/arch {platform!r}/{arch!r}")
-        elif (platform, arch) in seen:
-            errors.append(f"{here}: duplicate download for {platform}/{arch}")
-        else:
-            seen.add((platform, arch))
+        errors += check_known(here, "platform", download.get("platform"), registry["platforms"], True)
+        errors += check_known(here, "arch", download.get("arch"), registry["architectures"], False)
+        errors += check_known(here, "runtime", download.get("runtime"), registry["runtimes"], False)
+        variant = download.get("variant", "")
+        if variant != "" and not (isinstance(variant, str) and VARIANT.match(variant)):
+            errors.append(f"{here}: variant must be lowercase letters, digits and dashes, got {variant!r}")
+        identity = tuple(download.get(k, "") for k in ("platform", "arch", "runtime", "variant"))
+        if identity in seen:
+            errors.append(f"{here}: duplicate download for {'/'.join(identity)}")
+        seen.add(identity)
         url = download.get("url")
         if not isinstance(url, str) or not url.startswith("https://"):
             errors.append(f"{here}: url must be an https URL, got {url!r}")
@@ -92,6 +112,25 @@ def validate_page_dates(data):
         match = PAGE_DATE.search(front_matter(page)) if page.is_file() else None
         if dated and match and match.group(1) != min(dated):
             errors.append(f"{slug}: page date {match.group(1)} is not its first release {min(dated)}")
+    return errors
+
+
+TARGETS = re.compile(r"^targets\s*=\s*\{(.*?)\}", re.M | re.S)
+TARGET_ENTRY = re.compile(r"([A-Za-z0-9_-]+)\s*=\s*\[([^\]]*)\]")
+
+
+def validate_targets():
+    """[extra.hub] targets name registered platforms and architectures, nothing else."""
+    registry = load_registry()
+    errors = []
+    for page in SOFTWARE.glob("*.md"):
+        table = HUB_TABLE.search(front_matter(page))
+        targets = TARGETS.search(table.group(1)) if table else None
+        for platform, archs in TARGET_ENTRY.findall(targets.group(1) if targets else ""):
+            where = f"{page.stem}: targets.{platform}"
+            errors += check_known(where, "platform", platform, registry["platforms"], True)
+            for arch in re.findall(r'"([^"]*)"', archs):
+                errors += check_known(where, "arch", arch, registry["architectures"], True)
     return errors
 
 
@@ -182,7 +221,7 @@ def main():
     except (OSError, json.JSONDecodeError) as error:
         print(f"{RELEASES}: {error}")
         return 1
-    errors = validate(data) + validate_catalog_pages(data) + validate_page_dates(data)
+    errors = validate(data) + validate_targets() + validate_catalog_pages(data) + validate_page_dates(data)
     for error in errors:
         print(error)
     if errors:
