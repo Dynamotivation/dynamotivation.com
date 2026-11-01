@@ -2,6 +2,23 @@
   "all-out-attack-generator": {
     "releases": [
       {
+        "version": "1.2.3",
+        "date": "2026-11-01",
+        "highlights": [
+          "Windows now installs through a signed setup with per-user install and an uninstaller, replacing the portable exe"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.3/all-out-attack-generator-setup-1.2.3.exe",
+            "sha256": "98145847699196954df7b7a8ea88eb8eaeeec011c2cc4667b2d3a4eae550e24c",
+            "size": 4521296
+          }
+        ]
+      },
+      {
         "version": "1.2.2",
         "date": "2022-04-19",
         "highlights": [
