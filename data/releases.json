@@ -2,6 +2,24 @@
   "all-out-attack-generator": {
     "releases": [
       {
+        "version": "1.2.6",
+        "date": "2026-11-02",
+        "highlights": [
+          "The setup now has the All-Out Attack Generator icon and artwork instead of the Software Hub ones",
+          "The Dynamotivation logo on the start screen is now the current logo"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.6/all-out-attack-generator-setup-1.2.6.exe",
+            "sha256": "ba11c6d919ef77029646b6e378b513a3b88cb0a92ed1cf0f114772bb87196a4e",
+            "size": 4593608
+          }
+        ]
+      },
+      {
         "version": "1.2.5",
         "date": "2026-11-02",
         "highlights": [
