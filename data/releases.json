@@ -2,6 +2,23 @@
   "all-out-attack-generator": {
     "releases": [
       {
+        "version": "1.2.7",
+        "date": "2026-11-02",
+        "highlights": [
+          "The window title now shows the version you are running"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.7/all-out-attack-generator-setup-1.2.7.exe",
+            "sha256": "9d7f01e359160ea6e56582717db628ca5caa5c0b9dcdd328c243d0e4e9c11692",
+            "size": 4587840
+          }
+        ]
+      },
+      {
         "version": "1.2.6",
         "date": "2026-11-02",
         "highlights": [
