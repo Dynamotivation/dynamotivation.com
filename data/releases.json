@@ -2,6 +2,27 @@
   "all-out-attack-generator": {
     "releases": [
       {
+        "version": "1.2.10",
+        "date": "2026-11-03",
+        "highlights": [
+          "The update window now shows the version you have, the new version, its release date and what changed",
+          "Downloading an update shows a progress bar, and the game stays usable if the download fails or stalls",
+          "A downloaded update is checked against its published checksum before it is started, and is deleted if it does not match",
+          "A setup left over from an update that was interrupted is removed the next time the game starts",
+          "A failed update check at start-up no longer leaves the menus locked"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.10/all-out-attack-generator-setup-1.2.10.exe",
+            "sha256": "109f8e15a1ad12e02f212d09f884ffaae646b2bbc9545f1d5aa98a148986290d",
+            "size": 4586312
+          }
+        ]
+      },
+      {
         "version": "1.2.9",
         "date": "2026-11-03",
         "highlights": [
