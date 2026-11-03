@@ -185,5 +185,79 @@
   },
   "stellenwerttafel-plus": {
     "releases": []
+  },
+  "dynamotivation-software-hub": {
+    "releases": [
+      {
+        "version": "0.1.9",
+        "date": "2026-11-01",
+        "highlights": [],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.9/dynamotivation-software-hub-setup-0.1.9.exe",
+            "sha256": "d8b14f947da3c027296ae73334ac24024b8f379811a330616dc1a97b8539d174",
+            "size": 10322400
+          }
+        ]
+      },
+      {
+        "version": "0.1.8",
+        "date": "2026-11-01",
+        "highlights": [],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.8/dynamotivation-software-hub-setup-0.1.8.exe",
+            "sha256": "f9a448917ce7e24c13a6d5020976b5d82321150f217defef1feff87e922bd7d4",
+            "size": 10316400
+          }
+        ]
+      },
+      {
+        "version": "0.1.7",
+        "date": "2026-11-01",
+        "highlights": [],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.7/dynamotivation-software-hub-setup-0.1.7.exe",
+            "sha256": "b33504b6f917d2da08899147603214858eb61da473cb08e85bf0794876220f1f",
+            "size": 10317288
+          }
+        ]
+      },
+      {
+        "version": "0.1.2",
+        "date": "2026-11-01",
+        "highlights": [],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.2/Dynamotivation-Software-Hub-Setup-0.1.2.exe",
+            "sha256": "2fcbcbe8c148184ef58907c41ef4cd04e75c40f4810e54a696328f7b6aea6c43",
+            "size": 10318960
+          }
+        ]
+      },
+      {
+        "version": "0.1.1",
+        "date": "2026-11-01",
+        "highlights": [],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.1/Dynamotivation-Software-Hub-Setup-0.1.1.exe",
+            "sha256": "24783b9be459e75edca1e047ca132fff3b00b1befa8f42aebdea0233668fd002",
+            "size": 10317344
+          }
+        ]
+      }
+    ]
   }
 }
