@@ -23,92 +23,6 @@
         ]
       },
       {
-        "version": "1.2.7",
-        "date": "2026-11-02",
-        "highlights": [
-          "The window title now shows the version you are running"
-        ],
-        "downloads": [
-          {
-            "platform": "windows",
-            "arch": "x86",
-            "runtime": "yyc",
-            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.7/all-out-attack-generator-setup-1.2.7.exe",
-            "sha256": "9d7f01e359160ea6e56582717db628ca5caa5c0b9dcdd328c243d0e4e9c11692",
-            "size": 4587840
-          }
-        ]
-      },
-      {
-        "version": "1.2.6",
-        "date": "2026-11-02",
-        "highlights": [
-          "The setup now has the All-Out Attack Generator icon and artwork instead of the Software Hub ones",
-          "The Dynamotivation logo on the start screen is now the current logo"
-        ],
-        "downloads": [
-          {
-            "platform": "windows",
-            "arch": "x86",
-            "runtime": "yyc",
-            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.6/all-out-attack-generator-setup-1.2.6.exe",
-            "sha256": "ba11c6d919ef77029646b6e378b513a3b88cb0a92ed1cf0f114772bb87196a4e",
-            "size": 4593608
-          }
-        ]
-      },
-      {
-        "version": "1.2.5",
-        "date": "2026-11-02",
-        "highlights": [
-          "Updates are now found through the Dynamotivation website, and the app downloads and starts the new setup for you instead of opening a web page"
-        ],
-        "downloads": [
-          {
-            "platform": "windows",
-            "arch": "x86",
-            "runtime": "yyc",
-            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.5/all-out-attack-generator-setup-1.2.5.exe",
-            "sha256": "3a0eac2184389cd67af7fd10853d7028df6006f368baf801a3dfd83e7d95a333",
-            "size": 4539512
-          }
-        ]
-      },
-      {
-        "version": "1.2.4",
-        "date": "2026-11-01",
-        "highlights": [
-          "The setup is now signed twice (SHA-1 and SHA-256) so older Windows versions can read its signature"
-        ],
-        "downloads": [
-          {
-            "platform": "windows",
-            "arch": "x86",
-            "runtime": "yyc",
-            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.4/all-out-attack-generator-setup-1.2.4.exe",
-            "sha256": "c6792031da39439440705aa99422054631c678b3e5be40b49ff486bc9539f0ca",
-            "size": 4537000
-          }
-        ]
-      },
-      {
-        "version": "1.2.3",
-        "date": "2026-11-01",
-        "highlights": [
-          "Windows now installs through a signed setup with per-user install and an uninstaller, replacing the portable exe"
-        ],
-        "downloads": [
-          {
-            "platform": "windows",
-            "arch": "x86",
-            "runtime": "yyc",
-            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.3/all-out-attack-generator-setup-1.2.3.exe",
-            "sha256": "98145847699196954df7b7a8ea88eb8eaeeec011c2cc4667b2d3a4eae550e24c",
-            "size": 4521296
-          }
-        ]
-      },
-      {
         "version": "1.2.2",
         "date": "2022-04-19",
         "highlights": [
@@ -117,6 +31,16 @@
           "Fixed the opacity selector of the secondary shadow",
           "Merged the Android releases into one larger package to reduce confusion",
           "Changed the Windows file naming scheme to be clearer for non-technical users"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.2/all-out-attack-generator-setup-1.2.2.exe",
+            "sha256": "8614137076b4e50bab992515f03d529c6ca998c242ad9c2a211665a3150019be",
+            "size": 5092568
+          }
         ]
       },
       {
@@ -125,6 +49,16 @@
         "highlights": [
           "Improved UI hitboxes on touchscreen devices",
           "Added PNG strip export on Android"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.1/all-out-attack-generator-setup-1.2.1.exe",
+            "sha256": "406025bc5208a9b298d2cd8aa96ff7876ef00bd3027f02b525d808dba5a13833",
+            "size": 5097176
+          }
         ]
       },
       {
@@ -138,6 +72,16 @@
           "Fixed several image locations not working on Android",
           "Made the arranger work within the correct aspect ratio",
           "Fixed various other bugs"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.2.0/all-out-attack-generator-setup-1.2.0.exe",
+            "sha256": "70207f36bd0f123f1aa255b9ce63e659c6b32964a7049be61243f178817d586e",
+            "size": 5094800
+          }
         ]
       },
       {
@@ -148,6 +92,16 @@
           "Fixed some animation timings",
           "Added PNG sequence export",
           "Made extensive behind-the-scenes changes"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.1.0/all-out-attack-generator-setup-1.1.0.exe",
+            "sha256": "8cbffa45bbbb245e9626931454a8b74289b287150123a99c9a077f5c079c8888",
+            "size": 5100232
+          }
         ]
       },
       {
@@ -155,6 +109,16 @@
         "date": "2021-09-05",
         "highlights": [
           "First release"
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x86",
+            "runtime": "yyc",
+            "url": "https://github.com/Dynamotivation/All-Out-Attack-Generator/releases/download/1.0.0/all-out-attack-generator-setup-1.0.0.exe",
+            "sha256": "7b0f192d38f025d9cfdeca5ce1457457254f3574e2abf60b11cd738f0b201901",
+            "size": 5024528
+          }
         ]
       }
     ]
