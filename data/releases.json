@@ -131,5 +131,29 @@
   },
   "stellenwerttafel-plus": {
     "releases": []
+  },
+  "redmond-calculator": {
+    "releases": [
+      {
+        "version": "0.1.0",
+        "date": "2026-11-08",
+        "highlights": [
+          "First public release of Redmond Calculator, a cross-platform Fluent-style calculator that reuses the Microsoft Calculator engine.",
+          "Standard, scientific, programmer, date calculation, unit conversion and graphing modes, with calculation history.",
+          "Optional currency conversion from a source you choose; nothing is contacted before you agree, and amounts are always calculated on your device.",
+          "The Settings page lists every open source component and its license, including Microsoft Calculator.",
+          "Installs for the current user on Windows 10 (version 1607) or newer, 64-bit, with a signed setup."
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/port-redmond-calculator/releases/download/v0.1.0/redmond-calculator-setup-0.1.0-windows-x64.exe",
+            "sha256": "73d3e48c74e89d8b62a5aaa3f3225bfd38d396c13812c22d43e075a5c9c14c04",
+            "size": 55137160
+          }
+        ]
+      }
+    ]
   }
 }
