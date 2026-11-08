@@ -159,6 +159,24 @@
   "dynamotivation-software-hub": {
     "releases": [
       {
+        "version": "0.1.14",
+        "date": "2026-11-08",
+        "highlights": [
+          "Starting the Hub again while it is already running, also when it sits in the tray, now brings the running window forward instead of opening a second copy with its own tray icon.",
+          "Software that was listed before its first release is announced as \"New software released: be among the first to try it\" when that first release arrives, not as an update. An update is announced only for a newer version; a lower or equal version is never announced.",
+          "News inside the window now appears at the bottom as a notice you can dismiss, instead of pushing the software list and details down. Informational notices use a neutral blue instead of the accent colour, which looked like an error."
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.14/dynamotivation-software-hub-setup-0.1.14.exe",
+            "sha256": "3e9837d1d3f71dbd5a1bbb65159076b01d323de035d2a5ee41e8babdb36a8c54",
+            "size": 10290024
+          }
+        ]
+      },
+      {
         "version": "0.1.9",
         "date": "2026-11-01",
         "highlights": [],
