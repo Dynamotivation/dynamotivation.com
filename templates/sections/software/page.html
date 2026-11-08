@@ -1,4 +1,5 @@
 {% extends "sections/page.html" %}
+{% import "macros/media.html" as media %}
 
 {% block moreAdditionalResources %}
 <link rel="stylesheet" href="{{ get_url(path='css/sections/portfolio/software/page-additional.css') }}">
@@ -17,7 +18,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ _title }} | Dynamotivation">
 <meta property="og:description" content="{{ page.description }}">
-<meta property="og:image" content="{{ page.extra.image | default(value=_logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png')) | safe }}">
+<meta property="og:image" content="{{ media::png(url=page.extra.image | default(value=_logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png'))) }}">
 <meta property="og:url" content="{{ page.permalink | safe }}">
 <meta property="og:site_name" content="Dynamotivation">
 
@@ -29,7 +30,7 @@
 <meta property="twitter:url" content="{{ page.permalink | safe }}">
 <meta name="twitter:title" content="{{ _title }} | Dynamotivation">
 <meta name="twitter:description" content="{{ page.description }}">
-<meta name="twitter:image" content="{{ page.extra.image | default(value=_logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png')) | safe }}">
+<meta name="twitter:image" content="{{ media::png(url=page.extra.image | default(value=_logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png'))) }}">
 {% endblock %}
 
 {% block releases %}

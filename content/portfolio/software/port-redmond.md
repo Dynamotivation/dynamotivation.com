@@ -1,7 +1,7 @@
 +++
 title = "Port Redmond"
 date = 2026-07-25
-description = "A project to make versions of the Windows Calculator and Notepad for macOS and Linux. In development and not yet released."
+description = "A project to make versions of the Windows Calculator and Notepad for macOS and Linux. In development; Redmond Calculator is available for Windows."
 
 # Custom splash template. A page's own `template` always wins over the
 # `page_template` set by the parent section, so this one page opts out of the
@@ -39,7 +39,7 @@ price_usd = 0
 
 tagline = "Calculator and Notepad for macOS and Linux, in development."
 lede = "Port Redmond is an attempt to make a few everyday Windows apps available on macOS and Linux with a familiar layout."
-intro = "The Windows Calculator and Notepad only run on Windows. Port Redmond builds versions of them with Avalonia and .NET so they can run on macOS and Linux. Redmond Calculator reuses the calculation engine of Microsoft's open-source Windows Calculator. Neither app has been released yet."
+intro = "The Windows Calculator and Notepad only run on Windows. Port Redmond builds versions of them with Avalonia and .NET so they can run on macOS and Linux. Redmond Calculator reuses the calculation engine of Microsoft's open-source Windows Calculator. Redmond Calculator is available for Windows; Redmond Notepad has not been released yet."
 legal_notice = [
     "This is an unofficial, independent, open source project inspired by the Windows applications it brings to macOS and Linux.",
     "Windows and related names and artwork are copyright or trademarks of Microsoft Corporation.",

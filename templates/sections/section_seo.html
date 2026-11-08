@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros/media.html" as media %}
 
 {% block additionalResources %}
 
@@ -20,7 +21,7 @@
 {% if section.description %}
 <meta property="og:description" content="{{ section.description }}">
 {% endif %}
-<meta property="og:image" content="{{ section.extra.image | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png') }}">
+<meta property="og:image" content="{{ media::png(url=section.extra.image | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png')) }}">
 <meta property="og:url" content="{{ section.permalink | safe }}">
 <meta property="og:site_name" content="Dynamotivation">
 

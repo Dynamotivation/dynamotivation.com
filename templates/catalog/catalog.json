@@ -1,4 +1,5 @@
 {% import "catalog/macros.json" as m %}
+{% import "macros/media.html" as media %}
 {% set releases = load_data(path="data/releases.json") %}
 {
   "software": [
@@ -17,11 +18,11 @@
       "description": {{ page.description | default(value="") | json_encode() | safe }},
       "url": {{ page.permalink | json_encode() | safe }},
       "icon": {
-        "url": {{ logo | replace(from=".avif", to=".webp") | json_encode() | safe }},
+        "url": {{ media::webp(url=logo) | json_encode() | safe }},
         "width": {{ page.extra.logo_width | default(value=512) }},
         "height": {{ page.extra.logo_height | default(value=512) }}
       },
-      "screenshots": [{% for shot in page.extra.screenshot_urls | default(value=[]) %}{{ shot | replace(from=".avif", to=".webp") | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}],
+      "screenshots": [{% for shot in page.extra.screenshot_urls | default(value=[]) %}{{ media::webp(url=shot) | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}],
       "platforms": { {% for os, archs in page.extra.hub.targets | default(value=[]) %}
         {{ os | json_encode() | safe }}: [{% for t in archs %}{{ t | json_encode() | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]{% if not loop.last %},{% endif %}{% endfor %}
       },
