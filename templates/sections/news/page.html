@@ -1,4 +1,5 @@
 {% extends "sections/page.html" %}
+{% import "macros/media.html" as media %}
 
 {% block moreAdditionalResources %}{% endblock %}
 
@@ -158,7 +159,7 @@
 <meta property="og:title" content="{{ page.title }} | Dynamotivation">
 <meta property="og:description" content="{{ page.description }}">
 {# Prefer top-level page.image, then extra.image, then extra.logo, then site logo #}
-<meta property="og:image" content="{{ page.image | default(value=(page.extra.image | default(value=(page.extra.logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png'))))) | safe }}">
+<meta property="og:image" content="{{ media::png(url=page.image | default(value=(page.extra.image | default(value=(page.extra.logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png')))))) }}">
 <meta property="og:url" content="{{ page.permalink | safe }}">
 <meta property="og:site_name" content="Dynamotivation">
 
@@ -180,5 +181,5 @@
 <meta name="twitter:title" content="{{ page.title }} | Dynamotivation">
 <meta name="twitter:description" content="{{ page.description }}">
 {# Ensure Twitter uses the same image as OpenGraph #}
-<meta name="twitter:image" content="{{ page.image | default(value=(page.extra.image | default(value=(page.extra.logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png'))))) | safe }}">
+<meta name="twitter:image" content="{{ media::png(url=page.image | default(value=(page.extra.image | default(value=(page.extra.logo | default(value='https://assets.dynamotivation.com/files/site/fullLogo.png')))))) }}">
 {% endblock %}

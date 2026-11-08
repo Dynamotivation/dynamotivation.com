@@ -1,0 +1,19 @@
+{#
+  The one place media URLs are derived.
+
+  Every image has an AVIF, a WebP and a PNG twin next to each other in the
+  assets repository. A page declares the one it displays (the AVIF), and each
+  consumer asks for the format it needs:
+
+    - the website shows the declared URL as it is,
+    - the API (the Software Hub catalog) serves webp(),
+    - link-preview metadata (og:image, twitter:image) serves png(), because
+      many crawlers cannot read WebP or AVIF, and none of them read SVG.
+
+  A twin has to exist for every URL passed through here. SVG logos need a
+  PNG twin rendered from them before they can be used in metadata.
+#}
+
+{% macro webp(url) %}{{ url | replace(from=".avif", to=".webp") | safe }}{% endmacro webp %}
+
+{% macro png(url) %}{{ url | replace(from=".avif", to=".png") | replace(from=".webp", to=".png") | replace(from=".svg", to=".png") | safe }}{% endmacro png %}
