@@ -159,6 +159,22 @@
   "dynamotivation-software-hub": {
     "releases": [
       {
+        "version": "0.1.15",
+        "date": "2026-11-08",
+        "highlights": [
+          "No visible changes. Behind the scenes, a new Hub version is now recorded on the website right after it is published, so every Hub sees the update without a manual step."
+        ],
+        "downloads": [
+          {
+            "platform": "windows",
+            "arch": "x64",
+            "url": "https://github.com/Dynamotivation/dynamotivation-software-hub/releases/download/v0.1.15/dynamotivation-software-hub-setup-0.1.15.exe",
+            "sha256": "9298b414cc7911b1d9593077057e69c6b1a4ddf6886de011d260139886fbbc83",
+            "size": 10293152
+          }
+        ]
+      },
+      {
         "version": "0.1.14",
         "date": "2026-11-08",
         "highlights": [
