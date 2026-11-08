@@ -15,11 +15,13 @@ targets = { windows = ["x64"], macos = [], linux = [] }
 # Graphic enrichment
 project_title = "Redmond Calculator"
 date_label = "First released"
-logo = "https://assets.dynamotivation.com/files/projects/redmond-calculator/logo.svg"
+logo = "https://assets.dynamotivation.com/files/projects/redmond-calculator/logo.avif"
+logo_width = 256
+logo_height = 256
 infobox_images = [
     { path = "https://assets.dynamotivation.com/files/projects/redmond-calculator/logo.svg", imageWidthPx = 512, imageHeightPx = 512, description = "Redmond Calculator application icon", radius = "20%" }
 ]
-screenshot_urls = []
+screenshot_urls = ["https://assets.dynamotivation.com/files/projects/redmond-calculator/screenshot-standard.avif"]
 same_as = ["https://github.com/Dynamotivation/port-redmond-calculator"]
 
 # JSON-LD SEO for Software
